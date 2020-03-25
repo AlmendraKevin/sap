@@ -16,9 +16,9 @@ public class ProductoController {
         return "index_prod";
     }
 
-    @RequestMapping(path="/saveProducto",method = RequestMethod.POST)
+    @RequestMapping(path="/saveArticle",method = RequestMethod.POST)
     public String saveProducto(
-    @RequestParam(value = "type", required = true) String type,
+    @RequestParam(value = "id_revista", required = true) Integer id,
     @RequestParam(value = "race", required = true) String race,
     @RequestParam(value = "color", required = true) String color,
     @RequestParam(value = "fur", required = true) String fur,
