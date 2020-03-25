@@ -8,7 +8,7 @@ public class AutorEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name = "nombre")
     private String nombreAutor;
