@@ -24,14 +24,14 @@ public class ProductoController {
     @RequestMapping
     public String getHome(Model model){
 
-        return "index_prod";
+        return "from";
     }
 
     @RequestMapping(path="/saveArticle",method = RequestMethod.POST)
     public String saveProducto(
-        /** parametros para entidad producto */
+        /** params to entity producto */
     @RequestParam(value = "id_revista", required = true) Integer id_revista,
-    @RequestParam(value = "id_usuario", required = true) String id_usuario,
+    @RequestParam(value = "id_usuario", required = true) Integer id_usuario,
     @RequestParam(value = "file", required = true) MultipartFile file,
     @RequestParam(value = "nombre_autor", required = true) String nombre_autor,
     @RequestParam(value = "apellido_paterno_autor", required = true) String apellido_paterno_autor,
@@ -39,18 +39,30 @@ public class ProductoController {
     @RequestParam(value = "grado_estudio_autor", required = true) String grado_estudio_autor,
     @RequestParam(value = "nombre_articulo", required = true) String nombre_articulo,
     @RequestParam(value = "issn_articulo", required = true) String issn_articulo,
-    @RequestParam(value = "indizado", required = true) String indizado,
-    @RequestParam(value = "arbitraje", required = true) String arbitraje,
+    @RequestParam(value = "indizado", required = true) boolean indizado,
+    @RequestParam(value = "arbitraje", required = true) boolean arbitraje,
     @RequestParam(value = "fecha_publicacion", required = true) String fecha_publicacion    
     ){
         ProductoEntity prod = new ProductoEntity();
         /** setters atribs */
+        prod.setIdRevista(id_revista);
+        prod.setIdUsuario(id_usuario);
         try {
-            String archivo = Base64.getEncoder().encodeToString(file.getBytes());
+            prod.setArchivo(Base64.getEncoder().encodeToString(file.getBytes()));
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        prod.setNombreAutor(nombre_autor);
+        prod.setApellidoPaternoAutor(apellido_paterno_autor);
+        prod.setApellidoMaternoAutor(apellido_materno_autor);
+        prod.setGradoEstudioAutor(grado_estudio_autor);
+        prod.setNombreArticulo(nombre_articulo);
+        prod.setISSNArticulo(issn_articulo);
+        prod.setNombreArticulo(nombre_articulo);
+        prod.setIndizadoProducto(indizado);
+        prod.setArbitrajeProducto(arbitraje);
+        prod.setFechaPublicacion(fecha_publicacion);
+        /** calls service and save product */
         service.crearProducto(prod);
         return "redirect:/p/";
     }    

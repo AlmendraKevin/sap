@@ -17,10 +17,10 @@ public class ProductoEntity {
     private Integer idUsuario;
 
     @Column(name = "archivo")
-    private Byte[] archivo;
+    private String archivo;
 
     @Column(name = "nombre_autor")
-    private String idAutor;
+    private String nombreAutor;
 
     @Column(name = "apellido_paterno_autor")
     private String apellidoPaternoAutor;
@@ -68,22 +68,6 @@ public class ProductoEntity {
 
     public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
-    }
-
-    public Byte[] getArchivo() {
-        return archivo;
-    }
-
-    public void setArchivo(Byte[] archivo) {
-        this.archivo = archivo;
-    }
-
-    public String getIdAutor() {
-        return idAutor;
-    }
-
-    public void setIdAutor(String idAutor) {
-        this.idAutor = idAutor;
     }
 
     public String getApellidoPaternoAutor() {
@@ -148,5 +132,21 @@ public class ProductoEntity {
 
     public void setFechaPublicacion(String fechaPublicacion) {
         this.fechaPublicacion = fechaPublicacion;
+    }
+
+    public String getArchivo() {
+        return archivo;
+    }
+
+    public void setArchivo(String archivo) {
+        this.archivo = archivo;
+    }
+
+    public String getNombreAutor() {
+        return nombreAutor;
+    }
+
+    public void setNombreAutor(String nombreAutor) {
+        this.nombreAutor = nombreAutor;
     }
 }
