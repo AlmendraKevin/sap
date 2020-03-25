@@ -1,5 +1,6 @@
 package com.uabc.sap.controller;
 
+import java.io.IOException;
 import java.util.Base64;
 
 import com.uabc.sap.model.ProductoEntity;
@@ -44,7 +45,11 @@ public class ProductoController {
     ){
         ProductoEntity prod = new ProductoEntity();
         /** setters atribs */
-        String archivo = Base64.getEncoder().encodeToString(file.getBytes());
+        try {
+            String archivo = Base64.getEncoder().encodeToString(file.getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         service.save(prod);
         return "redirect:/p/";
