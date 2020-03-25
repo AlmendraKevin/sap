@@ -9,7 +9,7 @@ public class HomeController {
 
     @RequestMapping
     public String getHome(){
-        return "index";
+        return "login";
     }
 
 }
