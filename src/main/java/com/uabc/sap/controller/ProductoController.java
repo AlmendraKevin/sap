@@ -51,7 +51,7 @@ public class ProductoController {
             e.printStackTrace();
         }
 
-        service.save(prod);
+        service.crearProducto(prod);
         return "redirect:/p/";
     }    
 
